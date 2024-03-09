@@ -1,0 +1,3 @@
+class TAPiString {
+  TAPiString._();
+}

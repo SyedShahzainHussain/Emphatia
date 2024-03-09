@@ -1,0 +1,95 @@
+name: store
+description: "A new Flutter project."
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+
+# ------------------------ packages --------------------------- #
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  provider:
+  # Network
+  http:
+  # Loading
+  flutter_spinkit:
+  modal_progress_hud_nsn:
+  shimmer:
+  # Icons
+  iconsax:
+  cupertino_icons: ^1.0.6
+  # local storage
+  shared_preferences:
+  # utils:
+  intl:
+  logger:
+  url_launcher:
+  connectivity:
+  flutter_otp_text_field:
+  step_progress_indicator: ^1.0.2
+
+# ------------------------ End-packages --------------------------- #
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+
+# ------------------------ Local Assets --------------------------- #
+
+
+  assets:
+    - assets/images/
+    - assets/gif/
+    - assets/images/auth/
+
+
+# ------------------------ Local Fonts --------------------------- #
+
+  fonts:
+    - family: Poppins
+      fonts:
+          - asset: assets\fonts\Poppins-Bold.ttf
+          - asset: assets\fonts\Poppins-ExtraBold.ttf
+          - asset: assets\fonts\Poppins-SemiBold.ttf
+          - asset: assets\fonts\Poppins-Medium.ttf
+          - asset: assets\fonts\Poppins-Regular.ttf
+            weight: 700    
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
