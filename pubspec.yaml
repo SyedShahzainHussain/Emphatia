@@ -34,7 +34,7 @@ dependencies:
   connectivity:
   flutter_otp_text_field:
   step_progress_indicator: ^1.0.2
-
+  video_player: ^2.8.3
 # ------------------------ End-packages --------------------------- #
 dev_dependencies:
   flutter_test:
@@ -53,6 +53,7 @@ flutter:
     - assets/images/
     - assets/gif/
     - assets/images/auth/
+    - assets/videos/
 
 
 # ------------------------ Local Fonts --------------------------- #
