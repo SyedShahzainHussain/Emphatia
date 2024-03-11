@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:store/common/widget/otp_screen/otp_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:store/features/authentication/view/patient/patient_login.dart';
-import 'package:store/features/authentication/view/patient/patient_step.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
+import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
+import 'package:store/utils/validator/validation.dart';
+import 'package:store/viewModel/patient/signup_view_model.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
@@ -15,10 +19,30 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final form = GlobalKey<FormState>();
     ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
     ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
+    final TextEditingController confirmPassword = TextEditingController();
+
+    // ! onSave
+
+    void onSave() {
+      final validate = form.currentState!.validate();
+      if (!validate) {
+        return;
+      }
+      TDeviceUtils.hideKeyboard(context);
+      log(email.toString());
+      log(password.toString());
+      // ! post api
+      final data = {"email": email.text, "password": password.text};
+      context.read<SignUpViewModel>().postSignUpApi(data, context);
+    }
 
     return Form(
+      key: form,
       child: Padding(
         padding:
             const EdgeInsets.symmetric(vertical: TSized.spacebetweenSections),
@@ -26,8 +50,10 @@ class SignUpForm extends StatelessWidget {
           children: [
             // ! Email
             TextFormField(
+              controller: email,
+              validator: (value) => TValidation.validateEmail(value),
               decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.direct_right),
+                prefixIcon: Icon(Iconsax.password_check),
                 labelText: TTexts.email,
               ),
             ),
@@ -38,6 +64,8 @@ class SignUpForm extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: isObsecure,
               builder: (context, value, _) => TextFormField(
+                validator: (value) => TValidation.validatePassword(value),
+                controller: password,
                 obscuringCharacter: "*",
                 obscureText: isObsecure.value,
                 decoration: InputDecoration(
@@ -60,6 +88,9 @@ class SignUpForm extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: isObsecure2,
               builder: (context, value, _) => TextFormField(
+                validator: (value) =>
+                    TValidation.confirmPassword(password.text, value),
+                controller: confirmPassword,
                 obscuringCharacter: "*",
                 obscureText: isObsecure2.value,
                 decoration: InputDecoration(
@@ -84,11 +115,7 @@ class SignUpForm extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
-                      THelperFunction.navigatedToScreen(context,
-                          OtpScreen(onPressed: (String verification) {
-                        THelperFunction.navigatedToScreenWithPop(
-                            context, const PatientStep());
-                      }));
+                      onSave();
                     },
                     child: const Text(TTexts.signUp))),
             const SizedBox(

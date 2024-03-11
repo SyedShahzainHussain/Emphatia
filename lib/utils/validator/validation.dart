@@ -21,10 +21,20 @@ class TValidation {
       return "Password must contains at least one uppercase letter.";
     }
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return "Password must contains  one number.";
+      return "Password must contains one number.";
     }
     if (!value.contains(RegExp(r'[!@#$%^&*(),./";!<>]'))) {
       return "Password must contains at least one special letter.";
+    }
+    return null;
+  }
+
+  static String? confirmPassword(String? previousPass, String? currentPass) {
+    if (currentPass == null || currentPass.isEmpty) {
+      return "Confirm Password is requried";
+    }
+    if (previousPass != currentPass) {
+      return "Password dont match";
     }
     return null;
   }

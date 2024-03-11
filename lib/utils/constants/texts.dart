@@ -69,7 +69,12 @@ class TTexts {
   static const String enterYourAgeSubTitle = "Please enter your age";
   static const String enterYourGenderTitle = "Enter Your Gender";
   static const String enterYourGenderSubTitle = "Please enter your gender";
-
+  static const String selectedYourModel = "Select your model";
+  static const String stress = "stress";
+  static const String anxiety = "anxiety";
+  static const String depress = "depression";
+  static const String sleep = "sleep";
+  static const String routine = "routine";
   //! Authentication Text Header
   static const String and = "and";
   static const String continues = "continue";

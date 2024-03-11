@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:store/features/authentication/controller/patient_step_controller.dart';
 import 'package:store/features/authentication/view/patient/widget/patient_age_widget/patience_age.dart';
 import 'package:store/features/authentication/view/patient/widget/patient_gender_widget/patient_genders.dart';
-import 'package:store/features/authentication/view/patient/widget/patinet_questionare_widget/patient_questionare.dart';
+import 'package:store/features/authentication/view/patient/widget/patient_module_widget/patient_module.dart';
+
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/device/devices_utility.dart';
@@ -37,8 +37,10 @@ class PatientStep extends StatelessWidget {
                 // ! Enter Gender
                 PatientGender(),
 
+                // ! Patient Module
+                PatientModule(),
                 // ! Enter QuestionNare
-                PatientQuestion()
+                // PatientQuestion()
               ],
             ),
           ),

@@ -11,24 +11,22 @@ class GetStartedOnboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Material(
+      
       color: Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.all(TSized.defaultSpace),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    TTexts.getStarted,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  )),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(TSized.defaultSpace),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+                onPressed: onPressed,
+                child: Text(
+                  TTexts.getStarted,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                )),
+          ),
         ),
       ),
     );

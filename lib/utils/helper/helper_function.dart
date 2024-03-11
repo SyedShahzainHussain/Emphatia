@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:store/utils/constants/colors.dart';
 
 class THelperFunction {
   THelperFunction._();
@@ -52,13 +55,14 @@ class THelperFunction {
     Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 
- static void navigatedToScreenWithPop(BuildContext context, Widget screen) {
+  static void navigatedToScreenWithPop(BuildContext context, Widget screen) {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => screen),
       (context) => false,
     );
   }
+
   static String truncateText(String text, int maxLength) {
     if (text.length <= maxLength) {
       return text;
@@ -73,5 +77,16 @@ class THelperFunction {
 
   static List<T> removeDuplicates<T>(List<T> list) {
     return list.toSet().toList();
+  }
+
+  static void showToast(String msg) {
+    Fluttertoast.showToast(msg: msg);
+  }
+
+  static Widget showIndicator([double? size]) {
+return      SpinKitChasingDots(
+      color: TColors.primary,
+      size: size!,
+    );
   }
 }

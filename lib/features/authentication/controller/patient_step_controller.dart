@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:store/utils/device/devices_utility.dart';
 
 class PatientStepController with ChangeNotifier {
   PageController pageController = PageController();
   int currentPage = 0;
   int totalStep = 2;
+  String age = "";
 
   // ! page changed
   onPageChange(int index) {
@@ -16,6 +18,7 @@ class PatientStepController with ChangeNotifier {
     if (currentPage == totalStep) {
       // ! do some thing when the page is end
     } else {
+      TDeviceUtils.hideKeyboard(context);
       pageController.animateToPage(
         currentPage + 1,
         duration: const Duration(milliseconds: 400),

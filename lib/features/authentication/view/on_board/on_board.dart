@@ -3,6 +3,7 @@ import 'package:store/features/authentication/view/on_board/widget/get_started.d
 import 'package:store/features/authentication/view/on_board/widget/on_board_question.dart';
 import 'package:store/features/authentication/view/patient_psychologist_module/patient_psychologist.dart';
 import 'package:store/utils/helper/helper_function.dart';
+
 import 'package:video_player/video_player.dart';
 
 class OnBoard extends StatefulWidget {
@@ -37,25 +38,25 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // ! video
-        _controller.value.isInitialized
-            ? VideoPlayer(_controller)
-            : Container(),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [
+          // ! video
+          _controller.value.isInitialized
+              ? VideoPlayer(_controller)
+              : Container(),
 
-        // ! get stared button
-        GetStartedOnboard(
-          onPressed: () {
-            print("as");
+          // ! Onboard Question
+          const OnBoardQuestion(),
+
+          // ! Get Started
+          GetStartedOnboard(onPressed: () {
             THelperFunction.navigatedToScreenWithPop(
                 context, const PatientPsycologist());
-          },
-        ),
-
-        // ! Onboard Question
-        const OnBoardQuestion()
-      ],
+          }),
+        ],
+      ),
     );
   }
 }

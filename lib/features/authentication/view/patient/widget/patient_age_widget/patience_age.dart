@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:store/features/authentication/controller/patient_step_controller.dart';
 
 import 'package:store/features/authentication/view/patient/widget/patient_age_widget/patient_age_button.dart';
-import 'package:store/features/authentication/view/patient/widget/patient_age_widget/patient_age_form.dart';
 import 'package:store/features/authentication/view/patient/widget/patient_age_widget/patient_title.dart';
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/device/devices_utility.dart';
@@ -14,6 +14,7 @@ class PatientAge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController age = TextEditingController();
     return Scaffold(
       body: PopScope(
         canPop: false,
@@ -35,12 +36,24 @@ class PatientAge extends StatelessWidget {
 
               const SizedBox(height: TSized.spacebetweenSections),
               // ! Age Textfield
-              const PatientAgeForm(),
+              TextField(
+                controller: age,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: "Enter Your Age",
+                  prefixIcon: Icon(Iconsax.user_add),
+                ),
+              ),
               const SizedBox(height: TSized.spacebetweenSections),
               // ! Age Button
               PatientAgeButton(
                 onPressed: () {
-                  context.read<PatientStepController>().nextPage(context);
+                  if (age.text.isEmpty) {
+                    THelperFunction.showToast("Age Requried");
+                  } else {
+                    context.read<PatientStepController>().age = age.text;
+                    context.read<PatientStepController>().nextPage(context);
+                  }
                 },
               ),
             ],

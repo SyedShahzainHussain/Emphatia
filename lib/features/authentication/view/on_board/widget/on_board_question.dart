@@ -1,8 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:store/features/authentication/controller/on_board_patient_controller.dart';
 import 'package:store/features/authentication/view/on_board/widget/column_text.dart';
 import 'package:store/utils/constants/colors.dart';
+import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:store/utils/device/devices_utility.dart';
 
 class OnBoardQuestion extends StatelessWidget {
@@ -22,6 +25,8 @@ class OnBoardQuestion extends StatelessWidget {
             width: double.infinity,
             height: TDeviceUtils.screenHeight(context) / 3,
             child: PageView(
+              controller: context.read<OnBoardController>().pageController,
+              onPageChanged: context.read<OnBoardController>().pageChange,
               children: [
                 Container(
                   color: TColors.black.withOpacity(0.8),
@@ -99,6 +104,14 @@ class OnBoardQuestion extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          const SizedBox(
+            height: TSized.spacebetweenItem,
+          ),
+          // ! indicator
+          Consumer<OnBoardController>(
+            builder: (context, value, _) =>
+                SmoothPageIndicator(controller: value.pageController, count: 8),
           ),
         ],
       ),

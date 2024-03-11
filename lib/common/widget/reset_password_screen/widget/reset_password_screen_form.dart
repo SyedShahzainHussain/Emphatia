@@ -4,9 +4,10 @@ import 'package:store/utils/constants/extension.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
+import 'package:store/utils/validator/validation.dart';
 
 class ResetPasswordLoginForm extends StatelessWidget {
-  final VoidCallback onPressed;
+  final Function(String, String, BuildContext) onPressed;
   const ResetPasswordLoginForm({
     super.key,
     required this.onPressed,
@@ -14,10 +15,22 @@ class ResetPasswordLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final form = GlobalKey<FormState>();
     ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
     ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
+    TextEditingController password = TextEditingController();
+    TextEditingController confirmPassword = TextEditingController();
+
+    save() {
+      final validate = form.currentState!.validate();
+      if (!validate) {
+        return;
+      }
+      onPressed(password.text, confirmPassword.text, context);
+    }
 
     return Form(
+      key: form,
       child: Padding(
         padding:
             const EdgeInsets.symmetric(vertical: TSized.spacebetweenSections),
@@ -27,8 +40,10 @@ class ResetPasswordLoginForm extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: isObsecure,
               builder: (context, value, _) => TextFormField(
+                controller: password,
                 obscuringCharacter: "*",
                 obscureText: isObsecure.value,
+                validator: (value) => TValidation.validatePassword(value),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Iconsax.password_check),
                   suffixIcon: IconButton(
@@ -49,8 +64,11 @@ class ResetPasswordLoginForm extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: isObsecure2,
               builder: (context, value, _) => TextFormField(
+                controller: confirmPassword,
                 obscuringCharacter: "*",
                 obscureText: isObsecure2.value,
+                validator: (value) =>
+                    TValidation.confirmPassword(password.text, value),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Iconsax.password_check),
                   suffixIcon: IconButton(
@@ -79,8 +97,8 @@ class ResetPasswordLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: onPressed,
-                child:  Text(TTexts.submit.capitalize()),
+                onPressed: () => save(),
+                child: Text(TTexts.submit.capitalize()),
               ),
             ),
             const SizedBox(
