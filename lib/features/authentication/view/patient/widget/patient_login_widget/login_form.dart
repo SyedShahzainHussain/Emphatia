@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
@@ -6,39 +8,63 @@ import 'package:store/features/authentication/view/patient/patient_signup.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
+import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/validator/validation.dart';
 import 'package:store/viewModel/patient/forgot_reset_view_model.dart';
 import 'package:store/viewModel/patient/signin_view_model.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final form = GlobalKey<FormState>();
-    ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
-    ValueNotifier<bool> isCheck = ValueNotifier<bool>(false);
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
+  State<LoginForm> createState() => _LoginFormState();
+}
 
-    // ! onSave
+class _LoginFormState extends State<LoginForm> {
+  Timer? autoCheckTimer;
+  @override
+  void initState() {
+    super.initState();
+    autoCheckTimer = Timer(const Duration(seconds: 2), () {
+      // *  Toggle the checkbox after 2 seconds
+      isCheck.value = true;
+    });
+  }
 
-    void onSave() {
-      final validate = form.currentState!.validate();
-      if (!validate) {
-        return;
-      } else if (!isCheck.value) {
-        THelperFunction.showToast("Check The Remember Me");
-      } else {
-        // ! post api
-        final data = {"email": email.text, "password": password.text};
-        context.read<SignInViewModel>().postSignInApi(data, context);
-      }
+  bool isChecks = false;
+  final form = GlobalKey<FormState>();
+  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
+  ValueNotifier isCheck = ValueNotifier(false);
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
+  @override
+  void dispose() {
+    // Dispose the timer when the widget is disposed to prevent memory leaks
+    autoCheckTimer?.cancel();
+    super.dispose();
+  }
+
+  // ! onSave
+
+  void onSave() {
+    final validate = form.currentState!.validate();
+    if (!validate) {
+      return;
+    } else if (!isCheck.value) {
+      THelperFunction.showToast("Check The Remember Me");
+    } else {
+      // ! post api
+      final data = {"email": email.text, "password": password.text};
+      context.read<SignInViewModel>().postSignInApi(data, context);
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: form,
       child: Padding(

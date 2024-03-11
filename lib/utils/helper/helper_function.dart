@@ -83,8 +83,8 @@ class THelperFunction {
     Fluttertoast.showToast(msg: msg);
   }
 
-  static Widget showIndicator([double? size]) {
-return      SpinKitChasingDots(
+  static Widget showIndicator([double? size = 50]) {
+    return SpinKitChasingDots(
       color: TColors.primary,
       size: size!,
     );

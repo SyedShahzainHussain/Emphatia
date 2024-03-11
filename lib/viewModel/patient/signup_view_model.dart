@@ -4,6 +4,7 @@ import 'package:store/features/authentication/view/patient/widget/otp_screen/otp
 import 'package:store/features/authentication/view/patient/patient_step.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
+import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/local_storage/storage_utility.dart';
 
@@ -30,6 +31,7 @@ class SignUpViewModel extends ChangeNotifier {
 
   // ! post register api + verify api
   Future<void> postSignUpApi(dynamic body, BuildContext context) async {
+    TDeviceUtils.hideKeyboard(context);
     setSignUpLoading(true);
     _myRepo.postApi(body, TAPiString.register).then((value) {
       TStorageUtils.addEmailToPreference(body["email"]);
@@ -65,6 +67,7 @@ class SignUpViewModel extends ChangeNotifier {
   // ! verify otp
 
   Future<void> postSignUpVerifyApi(dynamic body, BuildContext context) async {
+    TDeviceUtils.hideKeyboard(context);
     setSignUpVerifyLoading(true);
     _myRepo.postApi(body, TAPiString.verifyOtp).then((value) {
       setSignUpVerifyLoading(false);

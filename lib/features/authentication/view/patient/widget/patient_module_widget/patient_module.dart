@@ -103,10 +103,7 @@ class PatientModule extends StatelessWidget {
                   child: Consumer<PatientStepViewModel>(
                     builder: (context, value, _) => value.isStepLoading
                         ? Center(
-                            child: SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: THelperFunction.showIndicator(20)),
+                            child: THelperFunction.showIndicator(20),
                           )
                         : Text(
                             TTexts.next.capitalize(),

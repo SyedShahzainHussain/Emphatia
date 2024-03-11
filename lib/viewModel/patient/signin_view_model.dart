@@ -4,6 +4,7 @@ import 'package:store/features/authentication/model/user_model.dart';
 import 'package:store/home.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
+import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/viewModel/patient/user_view_model.dart';
 
@@ -20,6 +21,7 @@ class SignInViewModel with ChangeNotifier {
 
   // ! post sign api
   Future<void> postSignInApi(dynamic body, BuildContext context) async {
+    TDeviceUtils.hideKeyboard(context);
     setSignInLoading(true);
     _myRepo.postApi(body, TAPiString.login).then((value) {
       final token = value["user"]["token"];

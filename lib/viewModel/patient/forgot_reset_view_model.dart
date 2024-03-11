@@ -5,6 +5,7 @@ import 'package:store/common/widget/verify_screen/verify_screen_.dart';
 import 'package:store/features/authentication/view/patient/widget/otp_screen_reset/otp_screen_reset.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
+import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/local_storage/storage_utility.dart';
 
@@ -39,6 +40,7 @@ class ForgotResetViewModel with ChangeNotifier {
 
   Future<void> forgotPassword(dynamic body, BuildContext context) async {
     setForgotLoading(true);
+    TDeviceUtils.hideKeyboard(context);
     _myRepo.postApi(body, TAPiString.forgotPassword).then((value) {
       final otp = value["otp"];
       TStorageUtils.addEmailToPreference(body["email"]);
@@ -84,6 +86,7 @@ class ForgotResetViewModel with ChangeNotifier {
 
   // ! Reset Password
   Future<void> postResetApi(dynamic body, BuildContext context) async {
+    TDeviceUtils.hideKeyboard(context);
     setResetVerifyLoading(true);
     _myRepo.postApi(body, TAPiString.resetPassword).then((value) {
       if (kDebugMode) {
