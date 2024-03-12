@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
-import 'package:store/utils/device/devices_utility.dart';
 
 class PsychlogistTitle extends StatelessWidget {
   const PsychlogistTitle({
@@ -13,12 +12,9 @@ class PsychlogistTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: TDeviceUtils.screenHeight(context) * 0.05,
-        ),
         Text(
           TTexts.enterYourAgeTitle,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(height: TSized.spacebetweenItem),
         Text(

@@ -14,7 +14,7 @@ class PsychologistGenderTitleWidget extends StatelessWidget {
       children: [
         Text(
           TTexts.enterYourGenderTitle,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(height: TSized.spacebetweenItem),
         Text(

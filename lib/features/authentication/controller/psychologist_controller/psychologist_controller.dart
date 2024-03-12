@@ -5,7 +5,6 @@ class PsychologistController with ChangeNotifier {
   PageController pageController = PageController();
   int currentPage = 0;
   int totalStep = 3;
-  String age = "";
 
   // ! page changed
   onPageChange(int index) {

@@ -165,6 +165,7 @@ class THelperFunction {
     ImagePicker imagePicker = ImagePicker();
     final XFile? image =
         await imagePicker.pickImage(source: ImageSource.camera);
+
     return File(image!.path);
   }
 

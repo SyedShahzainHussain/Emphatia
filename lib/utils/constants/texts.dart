@@ -85,6 +85,8 @@ class TTexts {
   static const String camera = "Camera";
   static const String gallery = "Gallery";
   static const String degree = "Enter Your Specialisation & HEC attest Pdf";
+  static const String licenceNumTitle = "Licence Number And Card Image";
+  static const String licenceNumSubTitle = "Enter your license number";
   //! Authentication Text Header
   static const String and = "and";
   static const String continues = "continue";
