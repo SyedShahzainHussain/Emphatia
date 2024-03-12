@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:store/common/widget/reset_password_screen/reset_password_screen.dart';
 import 'package:store/common/widget/verify_screen/verify_screen_.dart';
-import 'package:store/features/authentication/view/patient/widget/otp_screen_reset/otp_screen_reset.dart';
+import 'package:store/features/authentication/view/modules/patient/widget/otp_screen_reset/otp_screen_reset.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
 import 'package:store/utils/device/devices_utility.dart';

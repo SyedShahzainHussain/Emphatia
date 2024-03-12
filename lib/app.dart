@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/controller/on_board_patient_controller.dart';
-import 'package:store/features/authentication/controller/paitent_module_controller.dart';
-import 'package:store/features/authentication/controller/patient_gender_tile_controller.dart';
-import 'package:store/features/authentication/controller/patient_psy_controller.dart';
-import 'package:store/features/authentication/controller/patient_step_controller.dart';
-import 'package:store/features/authentication/view/patient/patient_step.dart';
+import 'package:store/features/authentication/controller/onboard_controller/on_board_patient_controller.dart';
+import 'package:store/features/authentication/controller/patient_controller/paitent_module_controller.dart';
+import 'package:store/features/authentication/controller/gender_controller/patient_gender_tile_controller.dart';
+import 'package:store/features/authentication/controller/patient_psyclogist_controller/patient_psy_controller.dart';
+import 'package:store/features/authentication/controller/patient_controller/patient_step_controller.dart';
+import 'package:store/features/authentication/controller/psychologist_controller/psychologist_controller.dart';
 import 'package:store/features/authentication/view/splash_screen/splash_screen.dart';
 
 import 'package:store/utils/theme/theme.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           create: (context) => PatientStepController(),
         ),
         ChangeNotifierProvider(
-          create: (context) => PatientGenderTileController(),
+          create: (context) => GenderTileController(),
         ),
         ChangeNotifierProvider(
           create: (context) => OnBoardController(),
@@ -51,6 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => PatientStepViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PsychologistController(),
         ),
       ],
       child: MaterialApp(

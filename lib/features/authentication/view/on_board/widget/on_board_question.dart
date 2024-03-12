@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/controller/on_board_patient_controller.dart';
+import 'package:store/features/authentication/controller/onboard_controller/on_board_patient_controller.dart';
 import 'package:store/features/authentication/view/on_board/widget/column_text.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/size.dart';

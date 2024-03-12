@@ -50,6 +50,8 @@ class TTexts {
   static const String createAccount = "Create Account";
   static const String forgotPassTitle = "Forget Password";
   static const String signUpTitle = "Let's create your account";
+  static const String psychologistSignTitle =
+      "Let's create your Psychologist account";
   static const String forgotPassSubTitle =
       "Dont's worry sometimes people can forget too. enter your email and we will send you a OTP.";
   static const String otpTitle = "OTP Code";
@@ -75,6 +77,14 @@ class TTexts {
   static const String depress = "depression";
   static const String sleep = "sleep";
   static const String routine = "routine";
+  static const String personalInfo = "Enter Your Personal Information";
+  static const String cnicLabelText = "CNIC Number (e.g., 00000-0000000-0)";
+  static const String enterYourCnicNumber = "Enter Your Cnic Number";
+  static const String enterYourCnicFrontBackImage =
+      "Enter Your Cnic Front & Back Image";
+  static const String camera = "Camera";
+  static const String gallery = "Gallery";
+  static const String degree = "Enter Your Specialisation & HEC attest Pdf";
   //! Authentication Text Header
   static const String and = "and";
   static const String continues = "continue";

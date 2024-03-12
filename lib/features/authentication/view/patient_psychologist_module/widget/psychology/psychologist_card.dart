@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/controller/patient_psy_controller.dart';
+import 'package:store/features/authentication/controller/patient_psyclogist_controller/patient_psy_controller.dart';
 import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/constants/enum.dart';
 

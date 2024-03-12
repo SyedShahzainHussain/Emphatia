@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:store/features/authentication/view/patient/widget/otp_screen/otp_screen.dart';
-import 'package:store/features/authentication/view/patient/patient_step.dart';
+import 'package:store/features/authentication/view/modules/patient/widget/otp_screen/otp_screen.dart';
+import 'package:store/features/authentication/view/modules/patient/patient_step.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
 import 'package:store/utils/device/devices_utility.dart';

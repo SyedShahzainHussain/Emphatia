@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:store/features/authentication/view/patient/patient_login.dart';
+import 'package:store/features/authentication/view/modules/patient/patient_login.dart';
 import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
 import 'package:store/utils/helper/helper_function.dart';

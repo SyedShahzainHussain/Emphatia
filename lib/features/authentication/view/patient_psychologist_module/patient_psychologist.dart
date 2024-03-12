@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store/common/widget/appBar/custom_appbar.dart';
-import 'package:store/features/authentication/controller/patient_psy_controller.dart';
-import 'package:store/features/authentication/view/patient/patient_login.dart';
+import 'package:store/features/authentication/controller/patient_psyclogist_controller/patient_psy_controller.dart';
+import 'package:store/features/authentication/view/modules/patient/patient_login.dart';
+import 'package:store/features/authentication/view/modules/psychologist/psychologist_login.dart';
 import 'package:store/features/authentication/view/patient_psychologist_module/widget/patient/patient_andpsy_column.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:store/features/authentication/view/patient_psychologist_module/widget/psychology/psychologist.dart';
@@ -72,15 +73,17 @@ class PatientPsycologist extends StatelessWidget {
       floatingActionButton: Consumer<PatientPsycologistController>(
         builder: (context, value, _) => FloatingActionButton(
           backgroundColor: isdark ? TColors.white : TColors.primaryBackground,
-          onPressed: value.isCheck.name == Modules.patient.name ||
-                  value.isCheck.name == Modules.psychologist.name
-              ? () {
-                  value.isCheck.name == Modules.patient.name
-                      ? THelperFunction.navigatedToScreen(
-                          context, const PatientLogin())
-                      : null;
-                }
-              : null,
+          onPressed: () {
+            if (value.isCheck != Modules.defaults) {
+              if (value.isCheck == Modules.patient) {
+                THelperFunction.navigatedToScreen(context, const PatientLogin());
+              } else if (value.isCheck == Modules.psychologist) {
+                THelperFunction.navigatedToScreen(context, const PsychologistLogin());
+              }
+            } else {
+              THelperFunction.showToast("Selected Any One");
+            }
+          },
           child: Icon(
             Iconsax.tick_circle,
             color: value.isCheck.name == Modules.patient.name ||

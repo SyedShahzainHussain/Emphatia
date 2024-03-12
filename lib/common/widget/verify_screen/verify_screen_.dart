@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:store/common/widget/verify_screen/widget/verify_button.dart';
 import 'package:store/common/widget/verify_screen/widget/verify_title.dart';
-import 'package:store/features/authentication/view/patient/patient_login.dart';
+import 'package:store/features/authentication/view/modules/patient/patient_login.dart';
 import 'package:store/utils/constants/image_strings.dart';
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/device/devices_utility.dart';

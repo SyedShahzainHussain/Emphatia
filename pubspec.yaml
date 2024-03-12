@@ -37,6 +37,8 @@ dependencies:
   video_player: ^2.8.3
   smooth_page_indicator:
   fluttertoast: ^8.2.4
+  image_picker: 
+  file_picker:
 # ------------------------ End-packages --------------------------- #
 dev_dependencies:
   flutter_test:
