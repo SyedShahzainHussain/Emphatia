@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:provider/provider.dart';
-import 'package:store/features/authentication/view/modules/patient/patient_login.dart';
-import 'package:store/features/authentication/view/modules/psychologist/psychologist_step.dart';
+import 'package:store/utils/constants/extension.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
-import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/validator/validation.dart';
-import 'package:store/viewModel/psycology/psy_signup_view_model.dart';
 
-class PsychlogisySignUpForm extends StatelessWidget {
-  const PsychlogisySignUpForm({
+class PsyResetPasswordLoginForm extends StatelessWidget {
+  final Function(String, String, BuildContext) onPressed;
+  const PsyResetPasswordLoginForm({
     super.key,
+    required this.onPressed,
   });
 
   @override
@@ -20,22 +18,15 @@ class PsychlogisySignUpForm extends StatelessWidget {
     final form = GlobalKey<FormState>();
     ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
     ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
-    final TextEditingController confirmPassword = TextEditingController();
+    TextEditingController password = TextEditingController();
+    TextEditingController confirmPassword = TextEditingController();
 
-    // ! onSave
-
-    void onSave() {
+    save() {
       final validate = form.currentState!.validate();
       if (!validate) {
         return;
       }
-
-      // ! post api
-      final data = {"email": email.text, "password": password.text};
-      context.read<PsySignUpViewModel>().postSignUpApi(data, context);
-      
+      onPressed(password.text, confirmPassword.text, context);
     }
 
     return Form(
@@ -45,26 +36,14 @@ class PsychlogisySignUpForm extends StatelessWidget {
             const EdgeInsets.symmetric(vertical: TSized.spacebetweenSections),
         child: Column(
           children: [
-            // ! Email
-            TextFormField(
-              controller: email,
-              validator: (value) => TValidation.validateEmail(value),
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: TTexts.email,
-              ),
-            ),
-            const SizedBox(
-              height: TSized.spaceBtwInputFields,
-            ),
             // ! Password
             ValueListenableBuilder(
               valueListenable: isObsecure,
               builder: (context, value, _) => TextFormField(
-                validator: (value) => TValidation.validatePassword(value),
                 controller: password,
                 obscuringCharacter: "*",
                 obscureText: isObsecure.value,
+                validator: (value) => TValidation.validatePassword(value),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Iconsax.password_check),
                   suffixIcon: IconButton(
@@ -79,17 +58,17 @@ class PsychlogisySignUpForm extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: TSized.spaceBtwInputFields / 2,
+              height: TSized.spaceBtwInputFields,
             ),
             // ! Confirm Password
             ValueListenableBuilder(
               valueListenable: isObsecure2,
               builder: (context, value, _) => TextFormField(
-                validator: (value) =>
-                    TValidation.confirmPassword(password.text, value),
                 controller: confirmPassword,
                 obscuringCharacter: "*",
                 obscureText: isObsecure2.value,
+                validator: (value) =>
+                    TValidation.confirmPassword(password.text, value),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Iconsax.password_check),
                   suffixIcon: IconButton(
@@ -107,26 +86,24 @@ class PsychlogisySignUpForm extends StatelessWidget {
               height: TSized.spaceBtwInputFields / 2,
             ),
 
-            // ! Sign up Button
+            const SizedBox(
+              height: TSized.spaceBtwInputFields / 2,
+            ),
+
+            const SizedBox(
+              height: TSized.spacebetweenSections,
+            ),
+            // ! Submit  Button
             SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () {
-                      onSave();
-                    },
-                    child: const Text(TTexts.signUp))),
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => save(),
+                child: Text(TTexts.submit.capitalize()),
+              ),
+            ),
             const SizedBox(
               height: TSized.spacebetweenItem,
             ),
-            // ! Login Account Button
-            SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                    onPressed: () {
-                      THelperFunction.navigatedToScreenWithPop(
-                          context, const PatientLogin());
-                    },
-                    child: const Text(TTexts.signIn))),
           ],
         ),
       ),

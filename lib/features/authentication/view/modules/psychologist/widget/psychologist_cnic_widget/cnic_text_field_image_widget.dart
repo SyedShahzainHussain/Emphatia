@@ -11,6 +11,8 @@ import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/helper/pakistan_cnic_input_formatter.dart';
+import 'package:store/utils/local_storage/storage_utility.dart';
+import 'package:store/viewModel/psycology/psy_step_view_model.dart';
 
 class CnicTextFieldImageWidget extends StatefulWidget {
   const CnicTextFieldImageWidget({
@@ -99,8 +101,12 @@ class _CnicTextFieldImageWidgetState extends State<CnicTextFieldImageWidget> {
                 if (frontImage != null &&
                     backImage != null &&
                     cnicController.text.isNotEmpty) {
-                  context.read<PsychologistController>().nextPage(context);
+                  TStorageUtils.getEmailToPreference().then((values) {
+                    context.read<PsyStepViewModel>().postPsyCnicAPi(frontImage,
+                        backImage, context, cnicController.text.toString(), values);
+                  });
                 } else {
+                  THelperFunction.showToast("All Field Are Required");
                   THelperFunction.showToast("All Field Are Required");
                 }
               },

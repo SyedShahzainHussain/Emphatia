@@ -14,6 +14,9 @@ import 'package:store/viewModel/patient/patient_step_view_model.dart';
 import 'package:store/viewModel/patient/signin_view_model.dart';
 import 'package:store/viewModel/patient/signup_view_model.dart';
 import 'package:store/viewModel/patient/user_view_model.dart';
+import 'package:store/viewModel/psycology/psy_signin_view_model.dart';
+import 'package:store/viewModel/psycology/psy_signup_view_model.dart';
+import 'package:store/viewModel/psycology/psy_step_view_model.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -54,6 +57,15 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => PsychologistController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PsySignUpViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PsyStepViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PhySignInViewModel(),
         ),
       ],
       child: MaterialApp(

@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:store/common/widget/forgot_password/forgot_password.dart';
+import 'package:provider/provider.dart';
 import 'package:store/features/authentication/view/modules/psychologist/psychlogist_signup.dart';
+import 'package:store/features/authentication/view/modules/psychologist/widget/psy_forgot_screen/psy_forgot_screen.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/validator/validation.dart';
+import 'package:store/viewModel/psycology/psy_signin_view_model.dart';
 
 class PsyChologistLoginForm extends StatefulWidget {
   const PsyChologistLoginForm({
@@ -54,7 +56,8 @@ class _PsyChologistLoginFormState extends State<PsyChologistLoginForm> {
       THelperFunction.showToast("Check The Remember Me");
     } else {
       // ! post api
-      // final data = {"email": email.text, "password": password.text};
+      final data = {"email": email.text, "password": password.text};
+      context.read<PhySignInViewModel>().phyPostSignInApi(data, context);
     }
   }
 
@@ -129,13 +132,14 @@ class _PsyChologistLoginFormState extends State<PsyChologistLoginForm> {
                 // ! Forget Password
                 TextButton(
                   onPressed: () {
-                    THelperFunction.navigatedToScreen(context, ForgotPassword(
+                    THelperFunction.navigatedToScreen(context,
+                        PsyForgotPassword(
                       onPressed: (email) {
                         if (email.isNotEmpty) {
-                          // final body = {"email": email};
-                          // context
-                          //     .read<ForgotResetViewModel>()
-                          //     .forgotPassword(body, context);
+                          final body = {"email": email};
+                          context
+                              .read<PhySignInViewModel>()
+                              .forgotPassword(body, context);
                         } else {
                           THelperFunction.showToast("Enter the correct Email");
                         }
