@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/controller/psychologist_controller/psychologist_controller.dart';
 import 'package:store/features/authentication/view/modules/psychologist/widget/psychologist_cnic_widget/expanded_file_contaner_widget.dart';
 import 'package:store/utils/constants/extension.dart';
 import 'package:store/utils/constants/size.dart';
