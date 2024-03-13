@@ -39,7 +39,6 @@ dependencies:
   fluttertoast: ^8.2.4
   image_picker: 
   file_picker:
-  flutter_absolute_path:
 # ------------------------ End-packages --------------------------- #
 dev_dependencies:
   flutter_test:
