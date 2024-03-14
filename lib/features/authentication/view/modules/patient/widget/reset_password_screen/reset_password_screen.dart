@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
-import 'package:store/common/widget/reset_password_screen/widget/reset_password_screen_form.dart';
+import 'package:store/features/authentication/view/modules/patient/widget/reset_password_screen/widget/reset_password_screen_form.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';

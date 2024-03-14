@@ -30,13 +30,13 @@ class _PsychlogistDegreePdfState extends State<PsychlogistDegreePdf> {
         progressIndicator: THelperFunction.showIndicator(),
         child: Scaffold(
             body: PopScope(
-          canPop: false,
-          onPopInvoked: (didPop) {
+                      canPop: false,
+                      onPopInvoked: (didPop) {
             if (!didPop) {
               context.read<PsychologistController>().previousPage(context);
             }
-          },
-          child: Column(
+                      },
+                      child: Column(
             children: [
               SizedBox(
                 height: TDeviceUtils.screenHeight(context) * 0.05,
@@ -90,8 +90,8 @@ class _PsychlogistDegreePdfState extends State<PsychlogistDegreePdf> {
                     child: Text(TTexts.submit.capitalize())),
               )
             ],
-          ),
-        )),
+                      ),
+                    )),
       ),
     );
   }

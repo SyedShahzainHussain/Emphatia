@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:store/common/widget/forgot_password/forgot_password.dart';
+import 'package:store/features/authentication/view/modules/patient/widget/forgot_password/forgot_password.dart';
 import 'package:store/features/authentication/view/modules/patient/patient_signup.dart';
 
 import 'package:store/utils/constants/size.dart';

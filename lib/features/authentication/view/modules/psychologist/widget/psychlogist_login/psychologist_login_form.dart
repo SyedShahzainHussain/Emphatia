@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/view/modules/psychologist/psychlogist_signup.dart';
 import 'package:store/features/authentication/view/modules/psychologist/widget/psy_forgot_screen/psy_forgot_screen.dart';
+import 'package:store/features/authentication/view/modules/psychologist/psychlogist_signup.dart';
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';

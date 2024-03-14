@@ -10,7 +10,10 @@ import 'package:store/viewModel/psycology/psy_signin_view_model.dart';
 
 class PsyForgotPassword extends StatelessWidget {
   final Function(String) onPressed;
-  const PsyForgotPassword({super.key, required this.onPressed});
+  const PsyForgotPassword({
+    super.key,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,7 @@ class PsyForgotPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Consumer<PhySignInViewModel>(
-        builder: (context,value,_)=>
-        ModalProgressHUD(
+        builder: (context, value, _) => ModalProgressHUD(
           inAsyncCall: value.isForgotLoading,
           progressIndicator: THelperFunction.showIndicator(),
           child: Padding(
@@ -43,10 +45,10 @@ class PsyForgotPassword extends StatelessWidget {
                 const SizedBox(
                   height: TSized.spacebetweenSections * 2,
                 ),
-          
+
                 // ! Form Text
                 TextFormField(
-                  controller:emailController,
+                    controller: emailController,
                     decoration: const InputDecoration(
                         labelText: TTexts.email,
                         prefixIcon: Icon(
@@ -55,12 +57,12 @@ class PsyForgotPassword extends StatelessWidget {
                 const SizedBox(
                   height: TSized.spacebetweenSections,
                 ),
-          
+
                 // ! Submit Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: ()=> onPressed(emailController.text),
+                    onPressed: () => onPressed(emailController.text),
                     child: Text(TTexts.submit.capitalize()),
                   ),
                 )
