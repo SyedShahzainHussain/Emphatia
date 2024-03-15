@@ -150,8 +150,8 @@ class THelperFunction {
     return list.toSet().toList();
   }
 
-  static void showToast(String msg) {
-    Fluttertoast.showToast(msg: msg,timeInSecForIosWeb: 3);
+  static Future<void> showToast(String msg)async {
+   await Fluttertoast.showToast(msg: msg,timeInSecForIosWeb: 3);
   }
 
   static Widget showIndicator([double? size = 50]) {

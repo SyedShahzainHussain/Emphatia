@@ -44,7 +44,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.toolThatWorkTitle,
                     subTitle: TTexts.toolThatWorkSubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -53,7 +53,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.everyQuidedJourneyTitle,
                     subTitle: TTexts.everyQuidedJourneySubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -62,7 +62,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.meditationMadeEasyTitle,
                     subTitle: TTexts.meditationMadeEasySubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -71,7 +71,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.findYourCommunityTitle,
                     subTitle: TTexts.findYourCommunitySubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -80,7 +80,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.personalMentalHealthTitle,
                     subTitle: TTexts.personalMentalHealthSubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -89,7 +89,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.sanvelloLiveTitle,
                     subTitle: TTexts.sanvelloLiveSubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),
@@ -98,7 +98,7 @@ class OnBoardQuestion extends StatelessWidget {
                   child: const ColumnText(
                     title: TTexts.therapyAnyWhereTitle,
                     subTitle: TTexts.therapyAnyWhereSubTitle,
-                    color2: TColors.darkGrey,
+                    color2: TColors.white,
                     color: TColors.primary,
                   ),
                 ),

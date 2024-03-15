@@ -51,7 +51,7 @@ class TTexts {
   static const String forgotPassTitle = "Forget Password";
   static const String signUpTitle = "Let's create your account";
   static const String psychologistSignTitle =
-      "Let's create your Psychologist account";
+      "Let's create your psychologists account";
   static const String forgotPassSubTitle =
       "Dont's worry sometimes people can forget too. enter your email and we will send you a OTP.";
   static const String otpTitle = "OTP Code";

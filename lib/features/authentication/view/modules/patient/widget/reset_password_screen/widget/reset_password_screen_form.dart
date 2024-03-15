@@ -6,7 +6,7 @@ import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
 import 'package:store/utils/validator/validation.dart';
 
-class ResetPasswordLoginForm extends StatelessWidget {
+class ResetPasswordLoginForm extends StatefulWidget {
   final Function(String, String, BuildContext) onPressed;
   const ResetPasswordLoginForm({
     super.key,
@@ -14,21 +14,26 @@ class ResetPasswordLoginForm extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final form = GlobalKey<FormState>();
-    ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
-    ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
-    TextEditingController password = TextEditingController();
-    TextEditingController confirmPassword = TextEditingController();
+  State<ResetPasswordLoginForm> createState() => _ResetPasswordLoginFormState();
+}
 
-    save() {
-      final validate = form.currentState!.validate();
-      if (!validate) {
-        return;
-      }
-      onPressed(password.text, confirmPassword.text, context);
+class _ResetPasswordLoginFormState extends State<ResetPasswordLoginForm> {
+  final form = GlobalKey<FormState>();
+  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
+
+  save() {
+    final validate = form.currentState!.validate();
+    if (!validate) {
+      return;
     }
+    widget.onPressed(password.text, confirmPassword.text, context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: form,
       child: Padding(

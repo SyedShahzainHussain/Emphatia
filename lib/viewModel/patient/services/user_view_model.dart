@@ -28,4 +28,20 @@ class UserViewModel with ChangeNotifier {
     dp.remove("email");
     return true;
   }
+
+  Future<bool> saveUserType(String userType) async {
+    final SharedPreferences dp = await SharedPreferences.getInstance();
+    dp.setString("userType", userType);
+    notifyListeners();
+
+    return true;
+  }
+
+  Future<bool> removeUserType() async {
+    final SharedPreferences dp = await SharedPreferences.getInstance();
+    dp.remove("userType");
+    notifyListeners();
+
+    return true;
+  }
 }

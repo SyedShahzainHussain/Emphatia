@@ -12,7 +12,7 @@ import 'package:store/viewModel/patient/forgot_reset_view_model.dart';
 import 'package:store/viewModel/patient/patient_step_view_model.dart';
 import 'package:store/viewModel/patient/signin_view_model.dart';
 import 'package:store/viewModel/patient/signup_view_model.dart';
-import 'package:store/viewModel/patient/user_view_model.dart';
+import 'package:store/viewModel/patient/services/user_view_model.dart';
 import 'package:store/viewModel/psycology/psy_signin_view_model.dart';
 import 'package:store/viewModel/psycology/psy_signup_view_model.dart';
 import 'package:store/viewModel/psycology/psy_step_view_model.dart';
@@ -34,7 +34,7 @@ class AppProviders extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SignUpViewModel()),
         ChangeNotifierProvider(create: (context) => SignInViewModel()),
         ChangeNotifierProvider(create: (context) => ForgotResetViewModel()),
-        ChangeNotifierProvider(create: (context) => UserViewModel()),
+        ChangeNotifierProvider(create: (context) => UserViewModel ()),
         ChangeNotifierProvider(create: (context) => PatientStepViewModel()),
         ChangeNotifierProvider(create: (context) => PsychologistController()),
         ChangeNotifierProvider(create: (context) => PsySignUpViewModel()),

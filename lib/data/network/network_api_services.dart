@@ -51,7 +51,7 @@ class NetworkApiServices extends BaseApiServices {
         if (errorJson.containsKey('message')) {
           throw UnauthorizedException(errorJson['message']);
         } else {
-          throw UnauthorizedException("Unauthorized Request");
+          throw BadRequestException(response.body.toString());
         }
       default:
         throw FetchDataException(

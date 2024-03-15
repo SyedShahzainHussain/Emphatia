@@ -10,7 +10,7 @@ import 'package:store/utils/constants/api_constants.dart';
 import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/local_storage/storage_utility.dart';
-import 'package:store/viewModel/patient/user_view_model.dart';
+import 'package:store/viewModel/patient/services/user_view_model.dart';
 
 class PhySignInViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();
@@ -131,6 +131,7 @@ class PhySignInViewModel with ChangeNotifier {
 
       final user = User(email: email, token: token, sId: sId);
       data.saveUser(user);
+      data.saveUserType("psychology");
       setSignInLoading(false);
       THelperFunction.showToast("User Login Successfully");
       THelperFunction.navigatedToScreenWithPop(context, const HomeScreen2());
@@ -139,12 +140,7 @@ class PhySignInViewModel with ChangeNotifier {
       }
     }).onError((error, stackTrace) {
       setSignInLoading(false);
-      if (error.toString() ==
-          "Error During Communication Error occured while communicate with serverwith status code401") {
-        THelperFunction.showToast("Admin Not Approved Your Account");
-      } else {
-        THelperFunction.showToast(error.toString());
-      }
+      THelperFunction.showToast(error.toString());
       if (kDebugMode) {
         print(error.toString());
       }

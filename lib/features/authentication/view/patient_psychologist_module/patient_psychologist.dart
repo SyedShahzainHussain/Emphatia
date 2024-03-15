@@ -60,7 +60,7 @@ class PatientPsycologist extends StatelessWidget {
                           .setModule(Modules.psychologist);
                     },
                     isdark: isdark,
-                    title: "Psychologist",
+                    title: "Psychologists",
                     image: TImageString.psychologist,
                   ),
                 ],
@@ -76,9 +76,11 @@ class PatientPsycologist extends StatelessWidget {
           onPressed: () {
             if (value.isCheck != Modules.defaults) {
               if (value.isCheck == Modules.patient) {
-                THelperFunction.navigatedToScreen(context, const PatientLogin());
+                THelperFunction.navigatedToScreen(
+                    context, const PatientLogin());
               } else if (value.isCheck == Modules.psychologist) {
-                THelperFunction.navigatedToScreen(context, const PsychologistLogin());
+                THelperFunction.navigatedToScreen(
+                    context, const PsychologistLogin());
               }
             } else {
               THelperFunction.showToast("Selected Any One");

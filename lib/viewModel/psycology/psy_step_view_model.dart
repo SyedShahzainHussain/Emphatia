@@ -131,7 +131,6 @@ class PsyStepViewModel with ChangeNotifier {
 
   Future<void> postPsyDegreeApi(
       File? image, String email, BuildContext context) async {
-    print(email);
     setPsyDegreeStepLoading(true);
     try {
       final request = MultipartRequest("POST", Uri.parse(TAPiString.degreeImg));
@@ -179,7 +178,7 @@ class PsyStepViewModel with ChangeNotifier {
     setPsylicenceStepLoading(true);
     try {
       String? image1Ext = image!.path.split(".").last;
-      final request = MultipartRequest("POST", Uri.parse(TAPiString.degreeImg));
+      final request = MultipartRequest("POST", Uri.parse(TAPiString.licience));
       final images = await MultipartFile.fromPath("image", image.path,
           contentType: MediaType("image", image1Ext), filename: "degree");
 

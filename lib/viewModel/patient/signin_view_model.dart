@@ -6,7 +6,9 @@ import 'package:store/repository/auth_repository.dart';
 import 'package:store/utils/constants/api_constants.dart';
 import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
-import 'package:store/viewModel/patient/user_view_model.dart';
+import 'package:store/viewModel/patient/services/user_view_model.dart';
+
+import '../../utils/local_storage/storage_utility.dart';
 
 class SignInViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();
@@ -29,15 +31,18 @@ class SignInViewModel with ChangeNotifier {
       final sId = value["user"]["_id"];
 
       final user = User(email: email, token: token, sId: sId);
+      TStorageUtils.addEmailToPreference(user.email!);
       data.saveUser(user);
+      data.saveUserType("patient");
       setSignInLoading(false);
       THelperFunction.showToast("User Login Successfully");
       THelperFunction.navigatedToScreenWithPop(context, const HomeScreen());
       if (kDebugMode) {
         print(value.toString());
       }
-    }).onError((error, stackTrace) {
+    }).onError((error, stackTrace) async {
       setSignInLoading(false);
+
       THelperFunction.showToast(error.toString());
 
       if (kDebugMode) {

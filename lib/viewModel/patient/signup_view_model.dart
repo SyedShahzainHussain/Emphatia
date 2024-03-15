@@ -40,13 +40,13 @@ class SignUpViewModel extends ChangeNotifier {
         context,
         OtpScreenSignUp(
           onPressed: (String verificationCode, context2) async {
-            await TStorageUtils.getEmailToPreference().then((value) {
-              final data = {
-                "email": value.toString(),
-                "otp": verificationCode.toString()
-              };
-              postSignUpVerifyApi(data, context2);
-            });
+              await TStorageUtils.getEmailToPreference().then((value) {
+                final data = {
+                  "email": value.toString(),
+                  "otp": verificationCode.toString()
+                };
+                postSignUpVerifyApi(data, context2);
+              });
           },
         ),
       );
