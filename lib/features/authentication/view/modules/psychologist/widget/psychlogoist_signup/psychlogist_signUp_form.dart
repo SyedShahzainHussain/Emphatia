@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:store/features/authentication/view/modules/patient/patient_login.dart';
+import 'package:store/features/authentication/view/modules/psychologist/psychologist_login.dart';
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
 import 'package:store/utils/helper/helper_function.dart';
@@ -134,7 +134,7 @@ class _PsychlogisySignUpFormState extends State<PsychlogisySignUpForm> {
                 child: OutlinedButton(
                     onPressed: () {
                       THelperFunction.navigatedToScreenWithPop(
-                          context, const PatientLogin());
+                          context, const PsychologistLogin());
                     },
                     child: const Text(TTexts.signIn))),
           ],
