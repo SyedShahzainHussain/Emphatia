@@ -8,33 +8,46 @@ import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/validator/validation.dart';
 import 'package:store/viewModel/psycology/psy_signup_view_model.dart';
 
-class PsychlogisySignUpForm extends StatelessWidget {
+class PsychlogisySignUpForm extends StatefulWidget {
   const PsychlogisySignUpForm({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final form = GlobalKey<FormState>();
-    ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
-    ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
-    final TextEditingController confirmPassword = TextEditingController();
+  State<PsychlogisySignUpForm> createState() => _PsychlogisySignUpFormState();
+}
 
-    // ! onSave
+class _PsychlogisySignUpFormState extends State<PsychlogisySignUpForm> {
+  final form = GlobalKey<FormState>();
+  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
+  late TextEditingController email;
+  late TextEditingController password;
+  late TextEditingController confirmPassword;
 
-    void onSave() {
-      final validate = form.currentState!.validate();
-      if (!validate) {
-        return;
-      }
+  // ! onSave
 
-      // ! post api
-      final data = {"email": email.text, "password": password.text};
-      context.read<PsySignUpViewModel>().postSignUpApi(data, context);
+  void onSave() {
+    final validate = form.currentState!.validate();
+    if (!validate) {
+      return;
     }
 
+    // ! post api
+    final data = {"email": email.text, "password": password.text};
+    context.read<PsySignUpViewModel>().postSignUpApi(data, context);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    email = TextEditingController();
+    password = TextEditingController();
+    confirmPassword = TextEditingController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: form,
       child: Padding(

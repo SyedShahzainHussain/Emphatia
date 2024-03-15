@@ -151,7 +151,7 @@ class THelperFunction {
   }
 
   static void showToast(String msg) {
-    Fluttertoast.showToast(msg: msg);
+    Fluttertoast.showToast(msg: msg,timeInSecForIosWeb: 3);
   }
 
   static Widget showIndicator([double? size = 50]) {

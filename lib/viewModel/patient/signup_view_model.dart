@@ -1,3 +1,4 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:store/features/authentication/view/modules/patient/widget/otp_screen/otp_screen.dart';
@@ -17,9 +18,6 @@ class SignUpViewModel extends ChangeNotifier {
     _isSignUpLoading = isSignUpLoading;
     notifyListeners();
   }
-
-
-   
 
   // ! signup verify loading
   bool _isSignUpVerifyLoading = false;
@@ -57,7 +55,12 @@ class SignUpViewModel extends ChangeNotifier {
       }
     }).onError((error, stackTrace) {
       setSignUpLoading(false);
-      THelperFunction.showToast(error.toString());
+      if (error.toString().contains('E11000 duplicate key error')) {
+        THelperFunction.showToast(
+            "Duplicate key error occurred. This email is already registered.");
+      } else {
+        THelperFunction.showToast("An error occurred: $error");
+      }
       if (kDebugMode) {
         print(error.toString());
       }

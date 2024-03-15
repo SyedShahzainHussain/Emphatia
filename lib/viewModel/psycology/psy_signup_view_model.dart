@@ -55,7 +55,12 @@ class PsySignUpViewModel extends ChangeNotifier {
       }
     }).onError((error, stackTrace) {
       setPsySignUpLoading(false);
-      THelperFunction.showToast(error.toString());
+      if (error.toString().contains('E11000 duplicate key error')) {
+        THelperFunction.showToast(
+            "This email is already registered.");
+      } else {
+        THelperFunction.showToast(error.toString());
+      }
       if (kDebugMode) {
         print(error.toString());
       }

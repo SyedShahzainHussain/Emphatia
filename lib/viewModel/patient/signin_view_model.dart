@@ -39,6 +39,7 @@ class SignInViewModel with ChangeNotifier {
     }).onError((error, stackTrace) {
       setSignInLoading(false);
       THelperFunction.showToast(error.toString());
+
       if (kDebugMode) {
         print(error.toString());
       }

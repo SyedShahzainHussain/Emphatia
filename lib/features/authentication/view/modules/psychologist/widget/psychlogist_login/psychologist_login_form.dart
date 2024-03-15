@@ -23,6 +23,14 @@ class PsyChologistLoginForm extends StatefulWidget {
 
 class _PsyChologistLoginFormState extends State<PsyChologistLoginForm> {
   Timer? autoCheckTimer;
+
+  bool isChecks = false;
+  final form = GlobalKey<FormState>();
+  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
+  ValueNotifier isCheck = ValueNotifier(false);
+  late TextEditingController email;
+  late TextEditingController password;
+
   @override
   void initState() {
     super.initState();
@@ -30,20 +38,16 @@ class _PsyChologistLoginFormState extends State<PsyChologistLoginForm> {
       // *  Toggle the checkbox after 2 seconds
       isCheck.value = true;
     });
+    email = TextEditingController();
+    password = TextEditingController();
   }
-
-  bool isChecks = false;
-  final form = GlobalKey<FormState>();
-  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
-  ValueNotifier isCheck = ValueNotifier(false);
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
 
   @override
   void dispose() {
-    // Dispose the timer when the widget is disposed to prevent memory leaks
     autoCheckTimer?.cancel();
     super.dispose();
+    email.dispose();
+    password.dispose();
   }
 
   // ! onSave

@@ -39,9 +39,20 @@ class NetworkApiServices extends BaseApiServices {
       case 400:
         throw BadRequestException(response.body.toString());
       case 500:
-        throw BadRequestException(response.body.toString());
+        Map<String, dynamic> errorJson = jsonDecode(response.body);
+        if (errorJson.containsKey('message')) {
+          throw BadRequestException(errorJson['message']);
+        } else {
+          throw BadRequestException(response.body.toString());
+        }
       case 404:
-        throw UnauthorizedException(response.body.toString());
+      case 401:
+        Map<String, dynamic> errorJson = jsonDecode(response.body);
+        if (errorJson.containsKey('message')) {
+          throw UnauthorizedException(errorJson['message']);
+        } else {
+          throw UnauthorizedException("Unauthorized Request");
+        }
       default:
         throw FetchDataException(
             'Error occured while communicate with serverwith status code${response.statusCode}');

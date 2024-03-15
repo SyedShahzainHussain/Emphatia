@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
@@ -7,40 +5,58 @@ import 'package:store/features/authentication/view/modules/patient/patient_login
 
 import 'package:store/utils/constants/size.dart';
 import 'package:store/utils/constants/texts.dart';
-import 'package:store/utils/device/devices_utility.dart';
 import 'package:store/utils/helper/helper_function.dart';
 import 'package:store/utils/validator/validation.dart';
 import 'package:store/viewModel/patient/signup_view_model.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final form = GlobalKey<FormState>();
-    ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
-    ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
-    final TextEditingController confirmPassword = TextEditingController();
+  State<SignUpForm> createState() => _SignUpFormState();
+}
 
-    // ! onSave
+class _SignUpFormState extends State<SignUpForm> {
+  final form = GlobalKey<FormState>();
+  ValueNotifier<bool> isObsecure = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isObsecure2 = ValueNotifier<bool>(true);
+  late TextEditingController email;
+  late TextEditingController password;
+  late TextEditingController confirmPassword;
 
-    void onSave() {
-      final validate = form.currentState!.validate();
-      if (!validate) {
-        return;
-      }
-      TDeviceUtils.hideKeyboard(context);
-      log(email.toString());
-      log(password.toString());
-      // ! post api
-      final data = {"email": email.text, "password": password.text};
-      context.read<SignUpViewModel>().postSignUpApi(data, context);
+  @override
+  void initState() {
+    super.initState();
+    email = TextEditingController();
+    password = TextEditingController();
+    confirmPassword = TextEditingController();
+  }
+
+  // ! onSave
+
+  void onSave() {
+    final validate = form.currentState!.validate();
+    if (!validate) {
+      return;
     }
 
+    // ! post api
+    final data = {"email": email.text, "password": password.text};
+    context.read<SignUpViewModel>().postSignUpApi(data, context);
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    confirmPassword.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: form,
       child: Padding(
