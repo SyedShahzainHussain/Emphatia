@@ -16,5 +16,10 @@ class TImageString {
   static const String verifiedSuccess =
       "assets/images/auth/verified.png";
 
+
+  // ! mmusic image
+    static const String musicCd =
+      "assets/images/music/music_cd.png";
+
 }
  

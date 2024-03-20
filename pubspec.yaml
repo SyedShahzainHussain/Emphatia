@@ -34,11 +34,12 @@ dependencies:
   connectivity:
   flutter_otp_text_field:
   step_progress_indicator: ^1.0.2
-  video_player: ^2.8.3
   smooth_page_indicator:
   fluttertoast: ^8.2.4
   image_picker: 
   file_picker:
+  just_audio: ^0.9.36
+  audio_video_progress_bar: ^2.0.2
 # ------------------------ End-packages --------------------------- #
 dev_dependencies:
   flutter_test:
@@ -58,7 +59,8 @@ flutter:
     - assets/gif/
     - assets/images/auth/
     - assets/images/onBoard/
-    - assets/videos/
+    - assets/naat/
+    - assets/images/music/
 
 
 # ------------------------ Local Fonts --------------------------- #
@@ -66,11 +68,11 @@ flutter:
   fonts:
     - family: Poppins
       fonts:
-          - asset: assets\fonts\Poppins-Bold.ttf
-          - asset: assets\fonts\Poppins-ExtraBold.ttf
-          - asset: assets\fonts\Poppins-SemiBold.ttf
-          - asset: assets\fonts\Poppins-Medium.ttf
-          - asset: assets\fonts\Poppins-Regular.ttf
+          - asset: assets/fonts/Poppins-Bold.ttf
+          - asset: assets/fonts/Poppins-ExtraBold.ttf
+          - asset: assets/fonts/Poppins-SemiBold.ttf
+          - asset: assets/fonts/Poppins-Medium.ttf
+          - asset: assets/fonts/Poppins-Regular.ttf
             weight: 700    
   
 

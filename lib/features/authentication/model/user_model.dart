@@ -16,12 +16,16 @@ class User {
   String? sId;
   String? email;
   String? token;
+  String? gender;
+  String? age;
 
-  User({this.sId, this.email, this.token});
+  User({this.sId, this.email, this.token, this.gender, this.age});
 
   User.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     email = json['email'];
     token = json['token'];
+    gender = json['gender'];
+    age = json['age'];
   }
 }

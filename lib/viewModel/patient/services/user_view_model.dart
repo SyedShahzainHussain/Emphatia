@@ -8,6 +8,8 @@ class UserViewModel with ChangeNotifier {
     dp.setString("token", user.token.toString());
     dp.setString("email", user.email.toString());
     dp.setString("userId", user.sId.toString());
+    dp.setString("gender", user.gender.toString());
+    dp.setString("age", user.age.toString());
     notifyListeners();
 
     return true;
@@ -18,7 +20,10 @@ class UserViewModel with ChangeNotifier {
     final String? token = dp.getString("token");
     final String? email = dp.getString("email");
     final String? userId = dp.getString("userId");
-    return User(email: email, sId: userId, token: token);
+    final String? gender = dp.getString("gender");
+    final String? age = dp.getString("age");
+    return User(
+        email: email, sId: userId, token: token, age: age, gender: gender);
   }
 
   Future<bool> remove() async {
