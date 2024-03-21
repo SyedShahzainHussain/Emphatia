@@ -8,15 +8,15 @@ import 'package:store/utils/constants/colors.dart';
 import 'package:store/utils/helper/helper_function.dart';
 
 class MeditationMusicPlayer extends StatefulWidget {
-  const MeditationMusicPlayer({super.key});
+  final String? musicUrls;
+  final String? title;
+  const MeditationMusicPlayer({super.key, required this.musicUrls,required this.title});
 
   @override
   State<MeditationMusicPlayer> createState() => _MeditationMusicPlayer();
 }
 
 class _MeditationMusicPlayer extends State<MeditationMusicPlayer> {
-  String musicUrl =
-      "assets/naat/khuda-ki-azmatain-kya-hain.mp3"; // Insert your music URL
   String thumbnailImgUrl =
       "https://syaria.com/wp-content/uploads/2013/09/Music-CD.jpg"; // Insert your thumbnail URL
 
@@ -25,7 +25,7 @@ class _MeditationMusicPlayer extends State<MeditationMusicPlayer> {
   bool playing = false;
 
   void loadMusic() async {
-    await player.setAsset(musicUrl);
+    await player.setUrl(widget.musicUrls!);
     setState(() {
       loaded = true;
     });
@@ -60,8 +60,8 @@ class _MeditationMusicPlayer extends State<MeditationMusicPlayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(
-          title: Text("Khuda Ki Azmatain"),
+        appBar:  CustomAppBar(
+          title: Text(widget.title!),
           showBackArrow: true,
         ),
         body: Column(

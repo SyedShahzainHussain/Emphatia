@@ -44,7 +44,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(data);
     return Scaffold(
       body: data == null
           ? const Center(child: CircularProgressIndicator())

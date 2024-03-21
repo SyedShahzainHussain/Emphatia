@@ -45,8 +45,12 @@ class TAPiString {
 
   // ! forgot
   static const phyforgot = "$baseApiUrl2/forgetPassword";
-   // ! reset password api
+  // ! reset password api
   static const psyresetPassword = "$baseApiUrl2/resetPassword";
-    // ! login api
+  // ! login api
   static const psylogin = "$baseApiUrl2/login";
+
+  // ! get meditaion music
+
+  static const String meditation = "https://client-backend-4pho.onrender.com/audios";
 }

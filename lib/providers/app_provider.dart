@@ -10,6 +10,7 @@ import 'package:store/features/authentication/controller/gender_controller/patie
 import 'package:store/features/authentication/controller/psychologist_controller/psychologist_controller.dart';
 
 import 'package:store/viewModel/patient/forgot_reset_view_model.dart';
+import 'package:store/viewModel/patient/get_meditaion_view_model.dart';
 import 'package:store/viewModel/patient/patient_step_view_model.dart';
 import 'package:store/viewModel/patient/signin_view_model.dart';
 import 'package:store/viewModel/patient/signup_view_model.dart';
@@ -42,6 +43,7 @@ class AppProviders extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PsyStepViewModel()),
         ChangeNotifierProvider(create: (context) => PhySignInViewModel()),
         ChangeNotifierProvider(create: (context) => PatientHomeBottom()),
+        ChangeNotifierProvider(create: (context) => GetMeditationDataViewModel()),
       ],
       child: child,
     );
