@@ -45,6 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: data == null
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(

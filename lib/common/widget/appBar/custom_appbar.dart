@@ -8,13 +8,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPress;
   final List<Widget>? actions;
   final IconData? leadingIcon;
+  final Widget? bottomWidget;
   const CustomAppBar(
       {super.key,
       this.title,
       this.showBackArrow = false,
       this.leadingOnPress,
       this.actions,
-      this.leadingIcon});
+      this.leadingIcon,
+      this.bottomWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             : leadingIcon != null
                 ? IconButton(onPressed: leadingOnPress, icon: Icon(leadingIcon))
                 : null,
+        bottom: bottomWidget != null
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(50), child: bottomWidget!)
+            : null,
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(TSized.appBarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(bottomWidget == null ? TSized.appBarHeight : 110);
 }

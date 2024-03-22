@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:store/features/authentication/controller/category_controller/category_controller.dart';
 
 import 'package:store/features/authentication/controller/onboard_controller/on_board_patient_controller.dart';
 import 'package:store/features/authentication/controller/patient_controller/paitent_module_controller.dart';
@@ -8,6 +9,7 @@ import 'package:store/features/authentication/controller/patient_psyclogist_cont
 import 'package:store/features/authentication/controller/patient_controller/patient_step_controller.dart';
 import 'package:store/features/authentication/controller/gender_controller/patient_gender_tile_controller.dart';
 import 'package:store/features/authentication/controller/psychologist_controller/psychologist_controller.dart';
+import 'package:store/viewModel/patient/article_view_model.dart';
 
 import 'package:store/viewModel/patient/forgot_reset_view_model.dart';
 import 'package:store/viewModel/patient/get_meditaion_view_model.dart';
@@ -44,6 +46,8 @@ class AppProviders extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PhySignInViewModel()),
         ChangeNotifierProvider(create: (context) => PatientHomeBottom()),
         ChangeNotifierProvider(create: (context) => GetMeditationDataViewModel()),
+        ChangeNotifierProvider(create: (context) => ArticleViewModel()),
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
       ],
       child: child,
     );

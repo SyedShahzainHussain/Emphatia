@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:store/features/authentication/controller/patient_home/patient_home_bottom.dart';
+import 'package:store/features/authentication/view/modules/patient/article_screen.dart';
 import 'package:store/features/authentication/view/modules/patient/meditation_screen.dart';
 import 'package:store/features/authentication/view/modules/patient/profile_screen.dart';
 import 'package:store/utils/constants/colors.dart';
@@ -28,7 +29,7 @@ class PatientHomeScreen extends StatelessWidget {
 
                   icon: Icon(Iconsax.home),
                   selectedIcon: Icon(Iconsax.home1),
-                  label: "Feeds",
+                  label: "Articles",
                   ),
               NavigationDestination(
                   icon: Icon(Icons.music_note_outlined),
@@ -41,7 +42,7 @@ class PatientHomeScreen extends StatelessWidget {
             ],
           ),
           body: [
-            const Center(child: Text("Feed")),
+           const ArticleScreen(),
             const MeditationScreen(),
             const ProfileScreen(),
           ][value.currentIndex]),

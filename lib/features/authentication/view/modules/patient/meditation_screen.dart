@@ -28,8 +28,9 @@ class _MeditationScreenState extends State<MeditationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const CustomAppBar(
-        title: Text("Meditation"),
+        title: Text("Meditation", style: TextStyle(color: Colors.black)),
       ),
       body: ChangeNotifierProvider(
         create: (context) => getMeditationDataViewModel,
